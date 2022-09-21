@@ -10,7 +10,6 @@ module Validator
     if input.to_i >= 0 && input.to_i <= 99 && input.scan(/\D/).empty?
       return true    # Bắt đầu nhập phần tử vào mảng khi đầu vào thỏa điều kiện
     else
-      puts "\nTotal number of elements must be integer and between 0 and 99"
       return false   # Nhập lại tổng số phần tử mảng khi đầu vào không thỏa điều kiện
     end
   end
@@ -73,16 +72,20 @@ class MinElementsInArray
   # ========================================================= #
   
   def inputTotalNumber
-    while true do
+    begin
       print "Type total number of elements in array: "
       @total = gets.chomp
 
       # Dừng chương trình khi nhập -1
-      if @total.to_i == -1
-        return
-      elsif validatorToTalNumber( @total ) # Kiểm tra tổng số phần tử nằm trong khoảng từ 0 đến 99
-        break
+      return if @total.to_i == -1
+
+      # Kiểm tra tổng số phần tử nằm trong khoảng từ 0 đến 99
+      unless validatorToTalNumber( @total ) 
+        raise "Total number must be integer and between 0 and 99"
       end
+    rescue Exception => err
+      puts( err.to_s )
+      retry
     end
   end
 
@@ -97,9 +100,9 @@ class MinElementsInArray
       @element = gets.chomp
 
       # Dừng chương trình khi nhập -1
-      if @element.to_i == -1
-        return
-      elsif validatorElements( @element )   # Kiếm tra số nhập từ bàn phím
+      return if @element.to_i == -1
+        
+      if validatorElements( @element )   # Kiếm tra số nhập từ bàn phím
         @arr << @element.to_i
         checkMinValue( @element.to_i )      # Kiếm tra giá trị nhỏ nhất
         @index += 1
