@@ -3,27 +3,37 @@ require 'pry'
 class Bai3
 
   def initialize
-    @list_of_array = {}
+    @arr = []
     input_total_number
   end
 
   
   def sub_array_increase
-    binding.pry
-    sub = 1
-    @list_of_array[:sub] = []
-    minValue = @list_of_array[:total][0]
-    @list_of_array[:sub] << minValue
-    (1..@list_of_array[:total].length).each do |index|
-      if @list_of_array[:total][index] < minValue
-        @list_of_array[:sub][index], minValue = minValue, @list_of_array[:sub][index]
-        @list_of_array[:sub] << minValue
+    print "Main array is #{@arr}\n"
+    
+    main_array = @arr
+    sub_array = [main_array.first]
+    main_array.delete_at(0)
+    turns = 1
+    
+    loop do
+
+      if main_array.length == 0 && sub_array.length != 0
+        print "sub array #{turns} is #{sub_array}\n"
+        sub_array = []
+        break
+      end
+
+      if sub_array.last < main_array.first
+        sub_array << main_array.first
+        main_array.delete_at(0)
       else
-        sub += 1
-        print "The sub-array-increasement #{sub}: #{@list_of_array[:sub]}"
+        print "sub array #{turns} is #{sub_array}\n"
+        turns += 1
+        sub_array = [main_array.first]
+        main_array.delete_at(0)
       end
     end
-     # print "#{@list_of_array[:total]}\n"
   end
 
   
@@ -56,9 +66,8 @@ class Bai3
   
   def create_random_array( end_number )
     start_number = 0
-     @list_of_array[:total] = []
     while start_number <= end_number
-      @list_of_array[:total] << rand(1..9)
+      @arr << rand(1..9)
       start_number += 1
     end
   end
@@ -67,3 +76,4 @@ end
 
 ob = Bai3.new
 ob.sub_array_increase
+
