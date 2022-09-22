@@ -1,3 +1,5 @@
+require 'pry'
+
 class Bai3
 
   def initialize
@@ -7,6 +9,7 @@ class Bai3
 
   
   def sub_array_increase
+    binding.pry
     sub = 1
     @list_of_array[:sub] = []
     minValue = @list_of_array[:total][0]
@@ -43,7 +46,7 @@ class Bai3
 
 
   def input_total_number_validator( input )
-    if input.to_i >= 0 && input.to_i <= 99 && input.scan(/\D/).empty?
+    if input.to_i >= 0 && input.to_i <= 99 && input.scan(/\D/).empty? && input != ""
       return true
     else
       return false
