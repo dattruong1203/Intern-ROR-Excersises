@@ -7,7 +7,7 @@ module Validator
   # ======================================================================================== #
   
   def validatorToTalNumber( input )
-    if input.to_i >= 0 && input.to_i <= 99 && input.scan(/\D/).empty?
+    if input.to_i >= 0 && input.to_i <= 99 && input.scan(/\D/).empty? && input != ""
       return true    # Bắt đầu nhập phần tử vào mảng khi đầu vào thỏa điều kiện
     else
       return false   # Nhập lại tổng số phần tử mảng khi đầu vào không thỏa điều kiện
@@ -20,7 +20,7 @@ module Validator
   # ==================================================================================== #
   
   def validatorElements( input )
-    if input.scan(/\D/).empty?
+    if input.scan(/\D/).empty? && input != ""
       return true   # Dữ liệu nhập từ bàn phím là số tự nhiên
     else
       puts("\nElement must be a natural number")
