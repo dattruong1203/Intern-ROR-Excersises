@@ -25,14 +25,18 @@ class Bai3
     
     loop do
 
+      # Xuất mảng con cuối cùng
       if main_array.length == 0 && sub_array.length != 0
         print "sub increametal array #{turns} is #{sub_array}\n"
         break
       end
 
+      # Tìm mảng con tăng
+      # Thêm phần tử vào mảng con và xóa phần tử đó trong mảng chính
       if sub_array.last < main_array.first
         sub_array << main_array.first
         main_array.delete_at(0)
+      # Xuất mảng con khi đã xác định được mảng con tăng
       else
         print "sub increametal array #{turns} is #{sub_array}\n"
         turns += 1
