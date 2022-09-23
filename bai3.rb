@@ -7,9 +7,16 @@ class Bai3
     input_total_number
   end
 
+  # ======================================= #
+  # Hàm sub_array_increase xuất mảng con tăng 
+  # ======================================= #
   
   def sub_array_increase
-    print "Main array is #{@arr}\n"
+
+    if @arr.length == 0
+      puts "There is no sub increametal array"
+      return
+    end
     
     main_array = @arr
     sub_array = [main_array.first]
@@ -19,8 +26,7 @@ class Bai3
     loop do
 
       if main_array.length == 0 && sub_array.length != 0
-        print "sub array #{turns} is #{sub_array}\n"
-        sub_array = []
+        print "sub increametal array #{turns} is #{sub_array}\n"
         break
       end
 
@@ -28,16 +34,21 @@ class Bai3
         sub_array << main_array.first
         main_array.delete_at(0)
       else
-        print "sub array #{turns} is #{sub_array}\n"
+        print "sub increametal array #{turns} is #{sub_array}\n"
         turns += 1
         sub_array = [main_array.first]
         main_array.delete_at(0)
       end
+      
     end
   end
 
   
   private
+
+  # =========================================== #
+  # Hàm input_total_number nhập tổng số phần tử  
+  # =========================================== #
   
   def input_total_number
     begin
@@ -55,6 +66,12 @@ class Bai3
   end
 
 
+  # ========================================== #
+  # Hàm input_total_number_validator dùng để    
+  # kiểm tra số n nhập từ bằn phím có thỏa điều     
+  # kiện đề bài
+  # ========================================== #
+
   def input_total_number_validator( input )
     if input.to_i >= 0 && input.to_i <= 99 && input.scan(/\D/).empty? && input != ""
       return true
@@ -63,9 +80,15 @@ class Bai3
     end
   end
 
+
+  # ==================================== #
+  # Hàm create_random_array tạo một hàm   
+  # gồm n phần tử ngẫu nhiên, giá trị     
+  # phần tử nằm trong khoảng từ 1 đến 9  
+  # ==================================== #
   
   def create_random_array( end_number )
-    start_number = 0
+    start_number = 1
     while start_number <= end_number
       @arr << rand(1..9)
       start_number += 1
