@@ -1,21 +1,21 @@
 def is_order(arr, sub_arr)
 
   # Khai báo biến j index của mảng phụ sub_arr
-  # Biến j đồng thời đếm số lần phần tử trong mảng con xuất hiện trong mảng chính
+  # Biến j đồng thời đếm số lần phần tử trong mảng phụ xuất hiện trong mảng chính
   j = 0
   
   (0..arr.length - 1).each do |i|
-    # So sánh từng phần tử trong mảng chính với mảng phụ
-    # Nếu bằng nhau thì index của mảng phụ tăng thêm 1
+    # So sánh từng phần tử trong mảng chính với mảng phụ.
+    # Nếu bằng nhau thì index của mảng phụ tăng thêm 1 để so sánh phần tử tiếp theo của mảng phụ.
+    # Đồng thời đếm số lần phần tử trong mảng phụ xuất hiện trong mảng chính.
     if arr[i] == sub_arr[j]
       j += 1
     end
   end
 
   # ===================================================================
-  # Vì j đếm số lần phần tử trong mảng con xuất hiện trong mảng chính.
   # Nếu số lần phần tử trong mảng phụ xuất hiện trong mảng chính bằng
-  # với số lượng số lượng phần tử trong mảng con thì chứng tỏ mảng phụ
+  # với số lượng số lượng phần tử trong mảng phụ thì chứng tỏ mảng phụ
   # chính là con của mảng chính.
   # ===================================================================
   if j == sub_arr.length
