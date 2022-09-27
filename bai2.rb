@@ -26,7 +26,7 @@ class Bai2
   def generate_csv
     CSV.open("#{@table_name}.csv", "w") do |csv|
       500000.times do |i|
-        csv << [i + 1, "Steve Jobs #{i}", "unkown#{i}@mail.com", "01436597254", "Silicon valley", "24/02/1955", "The great man !!!"]
+        csv << [i + 1, "Steve Jobs #{i}", "unkown#{i}@mail.com", "01436597254", "Silicon valley", "24/02/1955", "The great man \, !!!"]
       end  
     end
   end
@@ -66,7 +66,6 @@ class Bai2
       from '#{file_path}'
       CSV DELIMITER ',';
       "
-
   end
 
 
