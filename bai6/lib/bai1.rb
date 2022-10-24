@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 
 module Validator
   
@@ -126,7 +126,7 @@ class MinElementsInArray
 end
 
 
-ob = MinElementsInArray.new
-ob.inputArray
-ob.outputArray
+# ob = MinElementsInArray.new
+# ob.inputArray
+# ob.outputArray
 
